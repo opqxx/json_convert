@@ -10,8 +10,6 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 /**
  *
@@ -22,8 +20,6 @@ import org.slf4j.LoggerFactory;
  * @version v1.0
  */
 public final class FileUtils {
-	protected static Logger logger = LoggerFactory.getLogger(FileUtils.class);
-
     private FileUtils() {
         throw new IllegalStateException("Utility class");
     }
@@ -38,17 +34,13 @@ public final class FileUtils {
      * @date 2019年12月27日 下午8:35:28
      * @version v1.0
      */
-    public static String getResourcesText(String path){
+    public static String getResourcesText(String path) throws IOException {
     	InputStream is = FileUtils.class.getResourceAsStream(path);
         BufferedReader br = new BufferedReader(new InputStreamReader(is));
         String s="";
         StringBuilder configContentStr = new StringBuilder();
-        try {
-            while((s=br.readLine())!=null) {
-            	configContentStr.append(s);
-            }
-        } catch (IOException e) {
-            logger.error("获取资源失败");
+        while((s=br.readLine())!=null) {
+            configContentStr.append(s);
         }
         return configContentStr.toString();
     }

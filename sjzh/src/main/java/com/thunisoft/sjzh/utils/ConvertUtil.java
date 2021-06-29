@@ -1,5 +1,6 @@
 package com.thunisoft.sjzh.utils;
 
+import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.text.SimpleDateFormat;
 import java.time.Instant;
@@ -9,8 +10,8 @@ import java.time.ZoneId;
 import java.util.*;
 
 import com.thunisoft.sjzh.model.*;
-import org.apache.commons.lang.StringUtils;
-import org.springframework.util.CollectionUtils;
+import org.apache.commons.collections.CollectionUtils;
+import org.apache.commons.lang3.StringUtils;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
@@ -48,7 +49,7 @@ public class ConvertUtil {
      * @author huangyi-1
      * @version 1.0
      */
-    public static String convertData(String orgJson,String convertConfigStr){
+    public static String convertData(String orgJson,String convertConfigStr) throws IOException {
         return convertData(orgJson,convertConfigStr, true);
     }
 
@@ -66,7 +67,7 @@ public class ConvertUtil {
      * @version v1.0
      */
     @SuppressWarnings("rawtypes")
-    public static String convertData(String orgJson,String convertConfigStr, boolean clearAllEmpty){
+    public static String convertData(String orgJson,String convertConfigStr, boolean clearAllEmpty) throws IOException {
 
         /** 解析源数据 */
         ConvertNode baseNode = new ConvertNode();
@@ -283,7 +284,7 @@ public class ConvertUtil {
      */
     @SuppressWarnings({ "unchecked", "rawtypes" })
     private static void creatResult(ConvertNode baseNode, Map<String,ConvertNode> nodeCacheMap,
-            String pName, ConvertConfig convertConfig,Object result){
+            String pName, ConvertConfig convertConfig,Object result) throws IOException {
         List<Map<String, ConvertNode>> childrens = baseNode.getChildren();
         if(childrens==null){
             return;

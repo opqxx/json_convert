@@ -9,6 +9,8 @@ package com.thunisoft.sjzh;
 import com.thunisoft.sjzh.utils.ConvertUtil;
 import com.thunisoft.sjzh.utils.FileUtils;
 
+import java.io.IOException;
+
 /**
  * Test
  * @description 测试类
@@ -18,7 +20,7 @@ import com.thunisoft.sjzh.utils.FileUtils;
  */
 public class Test {
 
-    public  static void main(String[] args){
+    public  static void main(String[] args) throws IOException {
         String orgJson = FileUtils.getResourcesText("/data/test1.json");
         String convertConf = FileUtils.getResourcesText("/template/sjzh_test1.json");
         System.out.println(orgJson);

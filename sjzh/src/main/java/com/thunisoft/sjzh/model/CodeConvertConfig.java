@@ -1,9 +1,10 @@
 package com.thunisoft.sjzh.model;
 
+import org.apache.commons.lang3.StringUtils;
+
 import java.util.List;
 
 
-import org.apache.commons.lang.StringUtils;
 
 /**
  *
